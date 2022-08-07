@@ -9,7 +9,7 @@ import {
   Heading4,
   Image,
   Header,
-  HeaderText,
+  // HeaderText,
   Link,
   Icon,
   Info,
@@ -17,6 +17,7 @@ import {
   FlexCol,
   Footer,
   Wrapper,
+  Paragraph,
 } from './styles/card'
 
 const Card = ({ children, ...restProps }) => (
@@ -27,6 +28,10 @@ Card.Text = ({ children, ...restProps }) => (
   <Text {...restProps}>{children}</Text>
 )
 
+Card.Paragraph = ({ children, ...restProps }) => (
+  <Paragraph {...restProps}>{children}</Paragraph>
+)
+
 Card.TextSmall = ({ children, ...restProps }) => (
   <TextSmall {...restProps}>{children}</TextSmall>
 )
@@ -35,9 +40,9 @@ Card.TextBold = ({ children, ...restProps }) => (
   <TextBold {...restProps}>{children}</TextBold>
 )
 
-Card.HeaderText = ({ children, ...restProps }) => (
-  <HeaderText {...restProps}>{children}</HeaderText>
-)
+// Card.HeaderText = ({ children, ...restProps }) => (
+//   <HeaderText {...restProps}>{children}</HeaderText>
+// )
 
 Card.Heading1 = ({ children, ...restProps }) => (
   <Heading1 {...restProps}>{children}</Heading1>

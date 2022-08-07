@@ -67,7 +67,7 @@ const Main = () => {
   }
 
   return (
-    <Container as='main'>
+    <main>
       <Form onSubmit={handleOnSubmit}>
         <Form.Label htmlFor='search'>
           <Form.Icon src={IconSearch} alt='icon search' />
@@ -81,7 +81,7 @@ const Main = () => {
         {error && <Form.Text>{error}</Form.Text>}
         <Form.Button type='submit'>Search</Form.Button>
       </Form>
-    </Container>
+    </main>
   )
 }
 

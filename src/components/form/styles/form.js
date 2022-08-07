@@ -1,21 +1,26 @@
 import styled from 'styled-components'
 export const FormContainer = styled.form`
+  margin-top: 36px;
   display: flex;
   /* justify-content: flex-start; */
+  background-color: ${({ theme }) => theme.backgroundColor2};
   align-items: center;
   width: 100%;
   padding: 7px;
   border-radius: 15px;
-  box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
-  background-color: var(--clr-neutral-100);
+  box-shadow: ${({ theme }) =>
+    theme.themeColor === 'light'
+      ? '0px 16px 30px -10px rgba(70, 96, 187, 0.198567)'
+      : 'none'};
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 600px) {
     padding: 10px;
   }
 `
 
 export const Input = styled.input`
   font-family: inherit;
+  background-color: transparent;
   margin-right: auto;
   border: 0;
   padding-top: 13px;
@@ -23,16 +28,19 @@ export const Input = styled.input`
   width: 100%;
   cursor: pointer;
   font-size: 13px;
-  color: hsla(220, 18%, 16%, 1);
+  color: ${({ theme }) =>
+    theme.themeColor === 'light'
+      ? 'hsla(220, 18%, 16%, 1)'
+      : theme.secondaryColor};
   outline: 0;
   caret-color: var(--clr-primary);
 
   &::placeholder {
-    color: var(--clr-accent-100);
+    color: ${({ theme }) => theme.accentColor1};
     letter-spacing: -0.5px;
   }
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 600px) {
     min-width: 24px;
     min-height: 24px;
     font-size: 18px;
@@ -50,8 +58,11 @@ export const Button = styled.button`
   border-radius: 10px;
   color: var(--clr-neutral-100);
   cursor: pointer;
+  &:hover {
+    background-color: var(--clr-primary-hover);
+  }
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 600px) {
     font-size: 16px;
     padding: 11.5px 24px;
   }
@@ -68,7 +79,7 @@ export const Icon = styled.img`
   min-height: 20px;
   /* width: 100%; */
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 600px) {
     min-width: 24px;
     min-height: 24px;
     margin-left: 25px;
@@ -80,14 +91,19 @@ export const Text = styled.span`
   font-size: 15px;
   color: #f74646;
   font-weight: 700;
-  display: block;
+  display: none;
   min-width: max-content;
 
-  @media only screen and (min-width: 550px) {
+  /* @media only screen and (min-width: 600px) {
     margin-right: 12px;
+  } */
+
+  @media only screen and (min-width: 800px) {
+    margin-right: 12px;
+    display: block;
   }
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 900px) {
     margin-right: 24px;
   }
 `

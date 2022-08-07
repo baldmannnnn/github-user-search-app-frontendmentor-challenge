@@ -2,18 +2,24 @@ import { ThemeProvider } from 'styled-components'
 import MainContainer from './containers/main'
 import UserDetailsContainer from './containers/userDetails'
 import HeaderContainer from './containers/header'
-import { GlobalStyles } from './globalStyles'
+import { Container, GlobalStyles } from './globalStyles'
 import { useThemeContext } from './context/themeContext'
+import { useUserContext } from './context/userContext'
 
 const App = () => {
   const { theme, lightTheme, darkTheme } = useThemeContext()
-  console.log(theme)
+  const { isLoading } = useUserContext()
+
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyles />
-      <HeaderContainer />
-      <MainContainer />
-      <UserDetailsContainer />
+      {!isLoading && (
+        <Container>
+          <HeaderContainer />
+          <MainContainer />
+          <UserDetailsContainer />
+        </Container>
+      )}
     </ThemeProvider>
   )
 }

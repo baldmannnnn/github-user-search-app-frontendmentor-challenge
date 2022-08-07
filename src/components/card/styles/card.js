@@ -1,9 +1,13 @@
 import styled from 'styled-components/macro'
 
 export const CardContainer = styled.div`
-  background-color: var(--clr-neutral-300);
+  margin-top: 16px;
+  background-color: ${({ theme }) => theme.backgroundColor2};
   border-radius: 15px;
-  box-shadow: 0px 16px 30px -10px hsla(227, 46%, 51%, 0.2);
+  box-shadow: ${({ theme }) =>
+    theme.themeColor === 'light'
+      ? '0px 16px 30px -10px rgba(70, 96, 187, 0.198567)'
+      : 'none'};
   padding: 32px 24px 48px;
   display: grid;
   grid-template-areas:
@@ -15,7 +19,7 @@ export const CardContainer = styled.div`
   column-gap: 1.125rem;
   row-gap: 1.125rem;
 
-  @media only screen and (min-width: 550px) {
+  @media only screen and (min-width: 600px) {
     grid-template-areas:
       'avatar profile profile'
       'bio bio bio'
@@ -35,29 +39,31 @@ export const CardContainer = styled.div`
 `
 
 export const Info = styled.div`
-  grid-area: info;
   display: grid;
   grid-area: profile;
   display: grid;
   align-content: space-evenly;
 
   @media only screen and (min-width: 900px) {
-    grid-template-areas:
-      ' name name created'
-      'username username username';
+    grid-template-columns: 2fr auto;
+    align-items: center;
   }
 `
 
 export const Heading1 = styled.h1`
   font-size: 16px;
   font-weight: 700;
-  color: var(--clr-accent-300);
-  line-height: 24px;
-  grid-area: name;
+  color: ${({ theme }) =>
+    theme.themeColor === 'light' ? theme.accentColor2 : theme.accentColor1};
+  line-height: 23.7px;
 
-  @media only screen and (min-width: 550px) {
+  @media only screen and (min-width: 600px) {
     font-size: 26px;
     line-height: 39px;
+  }
+
+  @media only screen and (min-width: 900px) {
+    grid-column: 1/1;
   }
 ` //name
 
@@ -65,13 +71,16 @@ export const Heading2 = styled.h2`
   font-size: 13px;
   line-height: 19.25px;
   font-weight: 400;
-  color: var(--clr-secondary);
-  grid-area: created;
+  color: ${({ theme }) => theme.secondaryColor};
   margin-bottom: 0;
 
-  @media only screen and (min-width: 550px) {
+  @media only screen and (min-width: 600px) {
     font-size: 15px;
-    margin-bottom: 10px;
+  }
+
+  @media only screen and (min-width: 900px) {
+    grid-column: 2/-1;
+    grid-row: 1/1;
   }
 ` // bio
 
@@ -80,11 +89,13 @@ export const Heading3 = styled.h3`
   font-size: 13px;
   font-weight: 400;
   line-height: 19.25px;
-  margin-bottom: 6px;
-  grid-area: username;
 
-  @media only screen and (min-width: 550px) {
+  @media only screen and (min-width: 600px) {
     font-size: 16px;
+    line-height: 24px;
+  }
+  @media only screen and (min-width: 900px) {
+    grid-column: 1/1;
   }
 ` // login
 
@@ -102,38 +113,62 @@ export const Image = styled.img`
   width: 70px;
   border-radius: 50%;
 
-  @media only screen and (min-width: 550px) {
+  @media only screen and (min-width: 600px) {
     width: 117px;
+    margin-bottom: 4px;
   }
 `
 
-export const HeaderText = styled.p`
-  font-size: 13px;
-  line-height: 19.25px;
-  font-weight: 400;
-  color: var(--clr-secondary);
-`
+// export const HeaderText = styled.p`
+//   font-size: 13px;
+//   line-height: 19.25px;
+//   font-weight: 400;
+//   color: ${({ theme }) => theme.secondaryColor};
+// `
 
 export const Text = styled.p`
-  grid-area: bio;
   font-size: 15px;
   line-height: 25px;
   color: var(--clr-accent-100);
   opacity: ${({ notAvailable }) => (notAvailable ? '0.5' : '1')};
 `
 
+export const Paragraph = styled.p`
+  grid-area: bio;
+  font-size: 13px;
+  line-height: 25px;
+  color: ${({ theme }) => theme.accentColor1};
+  margin-top: 12px;
+
+  @media only screen and (min-width: 600px) {
+    font-size: 15px;
+  }
+  @media only screen and (min-width: 900px) {
+    margin-top: 0;
+  }
+`
+
 export const TextSmall = styled.p`
-  color: var(--clr-accent-100);
+  /* color: var(--clr-accent-100); */
+  color: ${({ theme }) => theme.accentColor1};
   font-size: 11px;
   line-height: 16.29px;
   margin-bottom: 8px;
 `
 
 export const TextBold = styled.p`
-  color: var(--clr-accent-300);
-  font-size: 300;
+  color: ${({ theme }) =>
+    theme.themeColor === 'light'
+      ? 'var(--clr-accent-300)'
+      : 'var(--clr-neutral-100)'};
+  font-size: 16px;
   font-weight: 700;
   line-height: 23.7px;
+  text-align: center;
+
+  @media only screen and (min-width: 600px) {
+    text-align: left;
+  }
 `
 
 export const Icon = styled.img`
@@ -148,11 +183,25 @@ export const Body = styled.div`
   justify-content: space-around;
   margin-top: 4px;
   margin-bottom: 4px;
-  background-color: var(--clr-neutral-500);
+  background-color: ${({ theme }) => theme.backgroundColor1};
+
+  @media only screen and (min-width: 600px) {
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+  @media only screen and (min-width: 900px) {
+    justify-content: flex-start;
+    padding: 15px 32px;
+    gap: 50px;
+  }
 `
 export const FlexCol = styled.div`
   display: flex;
   flex-direction: column;
+
+  @media only screen and (min-width: 600px) {
+    margin-right: auto;
+  }
 `
 
 export const Footer = styled.div`
@@ -172,6 +221,21 @@ export const Footer = styled.div`
     grid-column: 2/-1;
     font-size: 13px;
     line-height: 19px;
+    color: ${({ theme }) => theme.accentColor1};
+  }
+
+  /* @media only screen and (min-width: 600px) {
+  } */
+
+  @media only screen and (min-width: 600px) {
+    grid-template-columns: auto-fill 2fr;
+
+    & div {
+      display: grid;
+      grid-column: auto;
+      grid-template-columns: 20px 2fr;
+      gap: 10px;
+    }
   }
 `
 

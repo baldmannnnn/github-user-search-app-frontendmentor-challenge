@@ -8,27 +8,28 @@ const HeaderContainer = () => {
   const { theme, setTheme } = useThemeContext()
 
   const ToggleThemeSwitch = () => {
-    if (theme === 'light') setTheme('dark')
-    else setTheme('light')
+    
+
+    theme === 'light' ? setTheme('dark') : setTheme('light')
   }
 
   return (
-    <Container>
-      <Header>
-        <Header.Wrapper>
-          <Header.Logo>devfinder</Header.Logo>
-        </Header.Wrapper>
-        <Header.Wrapper>
+    // <Container>
+    <Header>
+      <Header.Wrapper>
+        <Header.Logo>devfinder</Header.Logo>
+      </Header.Wrapper>
+      <Header.Wrapper>
+        <Header.Btn onClick={ToggleThemeSwitch}>
           <Header.Text>{theme === 'light' ? 'dark' : 'light'}</Header.Text>
-          <Header.Btn onClick={ToggleThemeSwitch}>
-            <Header.Icon
-              src={theme === 'light' ? IconMoon : IconSun}
-              alt={theme}
-            />
-          </Header.Btn>
-        </Header.Wrapper>
-      </Header>
-    </Container>
+          <Header.Icon
+            src={theme === 'light' ? IconMoon : IconSun}
+            alt={theme}
+          />
+        </Header.Btn>
+      </Header.Wrapper>
+    </Header>
+    // </Container>
   )
 }
 

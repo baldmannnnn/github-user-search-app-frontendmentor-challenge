@@ -1,17 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import App from './App'
+import App from './app'
 import { UserContextProvider } from './context/userContext'
 import { ThemeContextProvider } from './context/themeContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <ThemeContextProvider>
-      <UserContextProvider>
+    <UserContextProvider>
+      <ThemeContextProvider>
         <App />
-      </UserContextProvider>
-    </ThemeContextProvider>
+      </ThemeContextProvider>
+    </UserContextProvider>
   </React.StrictMode>
 )

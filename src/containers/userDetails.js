@@ -1,4 +1,3 @@
-import days from 'dayjs'
 import { Card } from '../components'
 import { Container } from '../globalStyles'
 import { useUserContext } from '../context/userContext'
@@ -23,7 +22,7 @@ const UserDetails = () => {
           <Card.Info>
             <Card.Heading1>{user.name}</Card.Heading1>
             <Card.Heading3>{`@${user.login}`}</Card.Heading3>
-            <Card.HeaderText>{`Joined ${user.createdAt}`}</Card.HeaderText>
+            <Card.Heading2>{`Joined ${user.createdAt}`}</Card.Heading2>
           </Card.Info>
           <Card.Text grid>
             {user.bio ? user.bio : 'This profile has no bio'}

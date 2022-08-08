@@ -97,14 +97,9 @@ export const Heading3 = styled.h3`
   @media only screen and (min-width: 900px) {
     grid-column: 1/1;
   }
-` // login
-
-export const Heading4 = styled.h4`` // repos
-
-export const Link = styled.a``
+`
 
 export const Header = styled.div`
-  /* margin-bottom: 32px; */
   grid-area: avatar;
 `
 
@@ -119,17 +114,10 @@ export const Image = styled.img`
   }
 `
 
-// export const HeaderText = styled.p`
-//   font-size: 13px;
-//   line-height: 19.25px;
-//   font-weight: 400;
-//   color: ${({ theme }) => theme.secondaryColor};
-// `
-
 export const Text = styled.p`
   font-size: 15px;
   line-height: 25px;
-  color: var(--clr-accent-100);
+  color: ${({ theme }) => theme.accentColor1};
   opacity: ${({ notAvailable }) => (notAvailable ? '0.5' : '1')};
 `
 
@@ -138,6 +126,7 @@ export const Paragraph = styled.p`
   font-size: 13px;
   line-height: 25px;
   color: ${({ theme }) => theme.accentColor1};
+  opacity: ${({ hasBio }) => (hasBio ? '1' : '0.5')};
   margin-top: 12px;
 
   @media only screen and (min-width: 600px) {
@@ -149,7 +138,6 @@ export const Paragraph = styled.p`
 `
 
 export const TextSmall = styled.p`
-  /* color: var(--clr-accent-100); */
   color: ${({ theme }) => theme.accentColor1};
   font-size: 11px;
   line-height: 16.29px;
@@ -217,14 +205,11 @@ export const Footer = styled.div`
     column-gap: 10px;
   }
 
-  & p {
+  /* & p {
     grid-column: 2/-1;
     font-size: 13px;
     line-height: 19px;
     color: ${({ theme }) => theme.accentColor1};
-  }
-
-  /* @media only screen and (min-width: 600px) {
   } */
 
   @media only screen and (min-width: 600px) {
@@ -242,4 +227,24 @@ export const Footer = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
+`
+
+export const Link = styled.a`
+  font-size: 15px;
+  font-family: inherit;
+  line-height: 25px;
+  color: ${({ theme }) => theme.accentColor1};
+  opacity: ${({ notAvailable }) => (notAvailable ? '0.5' : '1')};
+  text-decoration: none;
+  &:hover,
+  &:active,
+  &:focus {
+    color: ${({ theme }) => theme.accentColor1};
+  }
+
+  &:hover {
+    text-decoration: ${({ notAvailable }) =>
+      notAvailable ? 'none' : 'underline'};
+    cursor: ${({ notAvailable }) => (notAvailable ? 'default' : 'pointer')};
+  }
 `

@@ -1,4 +1,6 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { ReactSVG } from 'react-svg'
+
 export const FormContainer = styled.form`
   margin-top: 36px;
   display: flex;
@@ -11,7 +13,7 @@ export const FormContainer = styled.form`
   box-shadow: ${({ theme }) =>
     theme.themeColor === 'light'
       ? '0px 16px 30px -10px rgba(70, 96, 187, 0.198567)'
-      : 'none'};
+      : '0'};
 
   @media only screen and (min-width: 600px) {
     padding: 10px;
@@ -58,8 +60,11 @@ export const Button = styled.button`
   border-radius: 10px;
   color: var(--clr-neutral-100);
   cursor: pointer;
+  transition: background-color 0.3s;
+
   &:hover {
     background-color: var(--clr-primary-hover);
+    transition: background-color 0.3s;
   }
 
   @media only screen and (min-width: 600px) {
@@ -77,13 +82,50 @@ export const Icon = styled.img`
   margin-top: 5px;
   min-width: 20px;
   min-height: 20px;
-  /* width: 100%; */
 
   @media only screen and (min-width: 600px) {
     min-width: 24px;
     min-height: 24px;
     margin-left: 25px;
     margin-right: 22px;
+  }
+`
+export const IconSVG = styled(ReactSVG)`
+  svg {
+    margin-left: 11px;
+    margin-right: 9px;
+    display: block;
+    margin-top: 2px;
+
+    ${({ size }) =>
+      size &&
+      css`
+        width: ${size};
+        height: ${size};
+      `}
+    path {
+      /* ${({ color }) =>
+        color &&
+        css`
+          fill: ${color};
+        `} */
+      fill: var(--clr-primary);
+    }
+  }
+  /* margin-left: 11px;
+  margin-right: 9px;
+  display: block;
+  margin-top: 5px;
+  min-width: 20px;
+  min-height: 20px; */
+
+  @media only screen and (min-width: 600px) {
+    svg {
+      width: 24px;
+      height: 24px;
+      margin-left: 25px;
+      margin-right: 22px;
+    }
   }
 `
 
@@ -93,10 +135,6 @@ export const Text = styled.span`
   font-weight: 700;
   display: none;
   min-width: max-content;
-
-  /* @media only screen and (min-width: 600px) {
-    margin-right: 12px;
-  } */
 
   @media only screen and (min-width: 800px) {
     margin-right: 12px;

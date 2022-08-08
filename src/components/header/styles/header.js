@@ -1,14 +1,15 @@
 import styled from 'styled-components'
+import { ReactSVG } from 'react-svg'
 
 export const HeaderContainer = styled.div`
-  margin-top: 31px;
+  padding-top: 31px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   @media only screen and (min-width: 600px) {
     margin-top: 0;
-    margin-top: 140px;
+    padding-top: 140px;
   }
 `
 
@@ -27,7 +28,6 @@ export const Logo = styled.span`
     theme.themeColor === 'light'
       ? 'hsla(220, 18%, 16%, 1)'
       : theme.secondaryColor};
-
   &:hover {
     color: ${({ theme }) =>
       theme.themeColor === 'light'
@@ -36,17 +36,20 @@ export const Logo = styled.span`
   }
 `
 
-export const Text = styled.p`
+export const Text = styled.span`
   font-size: 13px;
   letter-spacing: 2.5px;
   text-transform: uppercase;
   font-weight: 700;
   color: ${({ theme }) => theme.secondaryColor};
+  transition: color 0.3s ease;
+
   &:hover {
     color: ${({ theme }) =>
       theme.themeColor === 'light'
         ? 'var(--clr-accent-600)'
         : 'hsl(222, 44%, 70%)'};
+    transition: color 0.3s ease;
   }
 `
 
@@ -58,13 +61,32 @@ export const Btn = styled.button`
   justify-content: center;
   align-items: center;
   font-family: inherit;
-  gap: 16px;
+  /* gap: 16px; */
 `
 
-export const Icon = styled.img`
-  min-width: 20px;
-  min-height: 20px;
-  color: var(--clr-accent-100);
-  align-self: baseline;
-  /* margin-top: 3px; */
+export const Icon = styled(ReactSVG)`
+  svg {
+    margin: 5px 0 0 0;
+    width: 20px;
+    height: 20px;
+    path {
+      fill: ${({ theme }) => theme.accentColor1};
+    }
+  }
+  svg:hover {
+    path {
+      fill: ${({ theme }) =>
+        theme.themeColor === 'light'
+          ? 'var(--clr-accent-600)'
+          : 'hsl(222, 44%, 70%)'};
+      transition: color 0.3s ease;
+    }
+  }
 `
+
+// export const Icon = styled.img`
+//   min-width: 20px;
+//   min-height: 20px;
+//   color: red;
+//   align-self: baseline;
+// `

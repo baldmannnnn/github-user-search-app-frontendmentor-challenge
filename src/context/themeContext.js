@@ -1,10 +1,5 @@
-import {
-  useState,
-  createContext,
-  useLayoutEffect,
-  useEffect,
-  useContext,
-} from 'react'
+import { createContext, useEffect, useContext } from 'react'
+import useLocalStorage from 'use-local-storage'
 
 const ThemeContext = createContext()
 
@@ -28,43 +23,16 @@ const darkTheme = {
   accentColor2: 'var(--clr-accent-700)',
 }
 
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+
 const ThemeContextProvider = ({ children }) => {
-  const [theme, setTheme] = useState()
+  const [theme, setTheme] = useLocalStorage(
+    'theme',
+    prefersDark ? 'dark' : 'light'
+  )
 
   useEffect(() => {
-    document.documentElement.classList.remove('theme-light')
-    document.documentElement.classList.remove('theme-dark')
-
-    try {
-      const localTheme = localStorage.getItem('localTheme')
-      const prefersDarkMode = window.matchMedia(
-        '(prefers-color-scheme: dark)'
-      ).matches
-
-      if (!localTheme && prefersDarkMode) {
-        document.documentElement.classList.add('theme-dark')
-        setTheme('dark')
-        return
-      }
-
-      if (!localTheme && !prefersDarkMode) {
-        document.documentElement.classList.add('theme-light')
-        setTheme('light')
-        return
-      }
-
-      if (localTheme) {
-        document.documentElement.classList.add('theme-' + localTheme)
-        setTheme(localTheme)
-        return
-      }
-    } catch (err) {
-      console.error(err)
-    }
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem('localTheme', theme)
+    localStorage.setItem('theme', JSON.stringify(theme))
   }, [theme])
 
   return (

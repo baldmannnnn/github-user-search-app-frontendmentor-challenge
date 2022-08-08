@@ -2,7 +2,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
 
-*:root {
+:root {
   --clr-primary: hsl(212, 100%, 50%);
   --clr-primary-hover: hsla(212, 100%, 69%, 1);
   --clr-secondary: hsl(217, 20%, 51%);
@@ -31,20 +31,12 @@ body {
 
 #root {
   min-height: 100vh;
-}
-
-.theme-dark {
-  background-color: var(--clr-accent-500);
-}
-
-.theme-light {
-  background-color: var(--clr-neutral-500); 
-}  
-
+  }
 `
 
 export const Container = styled.div`
   width: clamp(20.4375rem, 74.6%, 730px);
   position: relative;
   margin-inline: auto;
+  height: 100vh;
 `

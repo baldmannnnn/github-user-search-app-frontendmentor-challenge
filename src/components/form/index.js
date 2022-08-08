@@ -1,4 +1,13 @@
-import { FormContainer, Input, Icon, Button, Label, Text } from './styles/form'
+import { forwardRef } from 'react'
+import {
+  FormContainer,
+  Input,
+  Icon,
+  IconSVG,
+  Button,
+  Label,
+  Text,
+} from './styles/form'
 
 const Form = ({ children, ...restProps }) => (
   <FormContainer {...restProps}>{children}</FormContainer>
@@ -11,6 +20,11 @@ Form.Label = ({ children, ...restProps }) => (
 )
 
 Form.Icon = ({ ...restProps }) => <Icon {...restProps} />
+
+Form.IconSVG = forwardRef(({ ...restProps }, ref) => (
+  <IconSVG {...restProps} ref={ref} />
+))
+
 Form.Button = ({ children, ...restProps }) => (
   <Button {...restProps}>{children}</Button>
 )

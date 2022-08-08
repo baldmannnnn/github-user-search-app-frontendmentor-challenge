@@ -1,7 +1,6 @@
 import { createContext, useReducer, useEffect, useContext } from 'react'
-import axios from 'axios'
-import days from 'dayjs'
 import userReducer from '../reducer/userReducer'
+import useFetchUser from '../hooks/useFetchUser'
 const UserContext = createContext()
 
 const UserContextProvider = ({ children }) => {
@@ -10,65 +9,23 @@ const UserContextProvider = ({ children }) => {
     isLoading: true,
     error: null,
   })
+  const { fetchUser } = useFetchUser()
 
   useEffect(() => {
     dispatch({ type: 'SET_LOADING', payload: true })
 
-    const fetchUser = async () => {
+    const fetchUserData = async () => {
       try {
-        const { data } = await axios.get(
-          'https://api.github.com/users/octocat',
-          {
-            headers: {
-              Authorization: `search user token ${process.env.PERSONAL_ACCESS_TOKEN}`,
-            },
-          }
-        )
-
-        const {
-          name,
-          login,
-          avatar_url,
-          created_at,
-          bio,
-          public_repos,
-          followers,
-          following,
-          location,
-          twitter_username,
-          blog,
-          company,
-        } = data
-
-        const createdAt = days(created_at).format('DD MMM YYYY')
-
-        console.log(createdAt)
-
-        dispatch({
-          type: 'SET_USER',
-          payload: {
-            name,
-            login,
-            avatar_url,
-            createdAt,
-            bio,
-            public_repos,
-            followers,
-            following,
-            location,
-            twitter_username,
-            blog,
-            company,
-          },
-        })
-      } catch (error) {
+        const userDetails = await fetchUser()
+        dispatch({ type: 'SET_USER', payload: userDetails })
+      } catch (err) {
         dispatch({ type: 'SET_ERROR', payload: 'error' })
       }
     }
 
-    fetchUser()
+    fetchUserData()
     dispatch({ type: 'SET_LOADING', payload: false })
-  }, [])
+  }, [fetchUser])
 
   return (
     <UserContext.Provider value={{ ...state, dispatch }}>

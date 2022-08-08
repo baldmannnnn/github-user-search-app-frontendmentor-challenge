@@ -6,10 +6,8 @@ import {
   Heading1,
   Heading2,
   Heading3,
-  Heading4,
   Image,
   Header,
-  // HeaderText,
   Link,
   Icon,
   Info,
@@ -40,10 +38,6 @@ Card.TextBold = ({ children, ...restProps }) => (
   <TextBold {...restProps}>{children}</TextBold>
 )
 
-// Card.HeaderText = ({ children, ...restProps }) => (
-//   <HeaderText {...restProps}>{children}</HeaderText>
-// )
-
 Card.Heading1 = ({ children, ...restProps }) => (
   <Heading1 {...restProps}>{children}</Heading1>
 )
@@ -54,10 +48,6 @@ Card.Heading2 = ({ children, ...restProps }) => (
 
 Card.Heading3 = ({ children, ...restProps }) => (
   <Heading3 {...restProps}>{children}</Heading3>
-)
-
-Card.Heading4 = ({ children, ...restProps }) => (
-  <Heading4 {...restProps}>{children}</Heading4>
 )
 
 Card.Header = ({ children, ...restProps }) => (

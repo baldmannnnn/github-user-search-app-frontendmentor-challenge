@@ -47,11 +47,13 @@ const UserDetails = () => {
           <Card.Wrapper unavailable={!user.twitter_username ? 1 : 0}>
             <IconTwitter />
             <Card.Link
-              role='navigation'
               target='_blank'
+              aria-label={
+                !user.twitter_username ? 'not available' : 'twitter username'
+              }
               href={`${
                 !user.twitter_username
-                  ? '/'
+                  ? '#'
                   : 'https://twitter.com/' + user.twitter_username
               }`}
               unavailable={!user.twitter_username}>
@@ -64,7 +66,7 @@ const UserDetails = () => {
               target={`${!user.blog ? '_self' : '_blank'}`}
               href={`${
                 !user.blog
-                  ? '/'
+                  ? '#'
                   : !user.blog.includes('https')
                   ? 'https://' + user.blog
                   : user.blog
@@ -83,7 +85,7 @@ const UserDetails = () => {
               target='_blank'
               href={
                 !user.company
-                  ? '/'
+                  ? '#'
                   : 'https://github.com/' + user.company.replace('@', '')
               }
               unavailable={!user.company}>

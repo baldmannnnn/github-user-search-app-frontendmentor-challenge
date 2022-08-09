@@ -26,8 +26,7 @@ const SearchUser = () => {
   return (
     <Form role='search' onSubmit={handleOnSubmit}>
       <Form.Label htmlFor='search'>
-        {/* <Form.IconSVG size='24px' src={IconSearch} alt='icon search' /> */}
-        <IconSearch alt='search' />
+        <IconSearch />
       </Form.Label>
       <Form.Input
         id='search'

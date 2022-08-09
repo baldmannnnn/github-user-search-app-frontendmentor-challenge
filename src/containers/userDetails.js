@@ -51,7 +51,7 @@ const UserDetails = () => {
               target='_blank'
               href={`${
                 !user.twitter_username
-                  ? ''
+                  ? '/'
                   : 'https://twitter.com/' + user.twitter_username
               }`}
               unavailable={!user.twitter_username}>

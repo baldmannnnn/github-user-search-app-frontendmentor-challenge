@@ -63,6 +63,7 @@ const UserDetails = () => {
           <Card.Wrapper unavailable={!user.blog ? 1 : 0}>
             <IconWebsites />
             <Card.Link
+              aria-label={!user.blog ? 'not available' : "user's website"}
               target={`${!user.blog ? '_self' : '_blank'}`}
               href={`${
                 !user.blog
@@ -82,6 +83,7 @@ const UserDetails = () => {
           <Card.Wrapper unavailable={!user.company ? 1 : 0}>
             <IconCompany />
             <Card.Link
+              aria-label={!!user.company ? 'not available' : "user's company"}
               target='_blank'
               href={
                 !user.company

@@ -27,10 +27,14 @@ body {
   font-size: 16px;
   background-color: ${({ theme }) => theme.backgroundColor1};
   min-height: 100vh;
+  
 }
 
 #root {
   min-height: 100vh;
+  width: clamp(20.4375rem, 74.6%, 45.625rem);
+  position: relative;
+  margin-inline: auto;  
   }
 `
 

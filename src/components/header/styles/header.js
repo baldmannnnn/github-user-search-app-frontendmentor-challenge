@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { ReactSVG } from 'react-svg'
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.header`
   padding-top: 31px;
   display: flex;
   justify-content: space-between;

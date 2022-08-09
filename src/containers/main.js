@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Form } from '../components'
 import { useUserContext } from '../context/userContext'
 import useFetchUser from '../hooks/useFetchUser'
-import IconSearch from '../assets/images/icon-search.svg'
+import { ReactComponent as IconSearch } from '../assets/images/icon-search.svg'
 
 const Main = () => {
   const { error, dispatch } = useUserContext()
@@ -27,7 +27,8 @@ const Main = () => {
     <main>
       <Form onSubmit={handleOnSubmit}>
         <Form.Label htmlFor='search'>
-          <Form.IconSVG size='24px' src={IconSearch} alt='icon search' />
+          {/* <Form.IconSVG size='24px' src={IconSearch} alt='icon search' /> */}
+          <IconSearch alt='search' />
         </Form.Label>
         <Form.Input
           id='search'

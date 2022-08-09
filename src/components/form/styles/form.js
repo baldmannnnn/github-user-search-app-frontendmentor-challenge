@@ -73,7 +73,33 @@ export const Button = styled.button`
   }
 `
 
-export const Label = styled.label``
+export const Label = styled.label`
+  & > svg {
+    margin-left: 0.6875rem;
+    margin-right: 9px;
+    display: block;
+    margin-top: 2px;
+
+    ${({ size }) =>
+      size &&
+      css`
+        width: ${size};
+        height: ${size};
+      `}
+    path {
+      fill: var(--clr-primary);
+    }
+  }
+
+  @media only screen and (min-width: 37.5rem) {
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-left: 1.5625rem;
+      margin-right: 1.375rem;
+    }
+  }
+`
 
 export const Icon = styled.img`
   margin-left: 0.6875rem;
@@ -104,20 +130,9 @@ export const IconSVG = styled(ReactSVG)`
         height: ${size};
       `}
     path {
-      /* ${({ color }) =>
-        color &&
-        css`
-          fill: ${color};
-        `} */
       fill: var(--clr-primary);
     }
   }
-  /* margin-left: .6875rem;
-  margin-right: 9px;
-  display: block;
-  margin-top: 5px;
-  min-width: 1.25rem;
-  min-height: 1.25rem; */
 
   @media only screen and (min-width: 37.5rem) {
     svg {

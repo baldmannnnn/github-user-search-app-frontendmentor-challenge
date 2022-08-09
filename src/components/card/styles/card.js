@@ -69,6 +69,21 @@ export const Heading1 = styled.h1`
 `
 
 export const Heading2 = styled.h2`
+  color: var(--clr-primary);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.2rem;
+
+  @media only screen and (min-width: 37.5rem) {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  @media only screen and (min-width: 56.25rem) {
+    grid-column: 1/1;
+  }
+`
+
+export const Heading3 = styled.h3`
   font-size: 0.8125rem;
   line-height: 1.2rem;
   font-weight: 400;
@@ -82,21 +97,6 @@ export const Heading2 = styled.h2`
   @media only screen and (min-width: 56.25rem) {
     grid-column: 2/-1;
     grid-row: 1/1;
-  }
-`
-
-export const Heading3 = styled.h3`
-  color: var(--clr-primary);
-  font-size: 0.8125rem;
-  font-weight: 400;
-  line-height: 1.2rem;
-
-  @media only screen and (min-width: 37.5rem) {
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
-  @media only screen and (min-width: 56.25rem) {
-    grid-column: 1/1;
   }
 `
 
@@ -225,6 +225,16 @@ export const Footer = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
+
+  & > svg {
+    grid-column: 1/1;
+
+    path {
+      fill: ${({ theme }) => theme.accentColor1};
+      opacity: ${({ children }) =>
+        children[0].props.unavailable ? '0.5' : '1'};
+    }
+  }
 `
 
 export const Link = styled.a`

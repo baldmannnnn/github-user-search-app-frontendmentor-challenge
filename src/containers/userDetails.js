@@ -1,9 +1,9 @@
 import { Card } from '../components'
 import { useUserContext } from '../context/userContext'
-import IconLocation from '../assets/images/icon-location.svg'
-import IconTwitter from '../assets/images/icon-twitter.svg'
-import IconCompany from '../assets/images/icon-company.svg'
-import IconWebsites from '../assets/images/icon-website.svg'
+import { ReactComponent as IconLocation } from '../assets/images/icon-location.svg'
+import { ReactComponent as IconTwitter } from '../assets/images/icon-twitter.svg'
+import { ReactComponent as IconCompany } from '../assets/images/icon-company.svg'
+import { ReactComponent as IconWebsites } from '../assets/images/icon-website.svg'
 
 const UserDetails = () => {
   const { user, isLoading } = useUserContext()
@@ -19,8 +19,8 @@ const UserDetails = () => {
           <Card.Heading1>
             {!user.name ? user.login.replace('@', '') : user.name}
           </Card.Heading1>
-          <Card.Heading3>{`@${user.login}`}</Card.Heading3>
-          <Card.Heading2>{`Joined ${user.createdAt}`}</Card.Heading2>
+          <Card.Heading2>{`@${user.login}`}</Card.Heading2>
+          <Card.Heading3>{`Joined ${user.createdAt}`}</Card.Heading3>
         </Card.Info>
         <Card.Paragraph hasBio={user.bio}>
           {user.bio ? user.bio : 'This profile has no bio'}
@@ -41,17 +41,12 @@ const UserDetails = () => {
         </Card.Body>
         <Card.Footer>
           <Card.Wrapper>
-            <Card.Icon
-              unavailable={!user?.location ? 1 : 0}
-              src={IconLocation}
-              alt='location'
-            />
+            <IconLocation unavailable={!user.location ? 1 : 0} alt='location' />
             <Card.Text unavailable={!user.location}>{user.location}</Card.Text>
           </Card.Wrapper>
           <Card.Wrapper>
-            <Card.Icon
+            <IconTwitter
               unavailable={!user.twitter_username ? 1 : 0}
-              src={IconTwitter}
               alt='twitter'
             />
             <Card.Link
@@ -66,11 +61,7 @@ const UserDetails = () => {
             </Card.Link>
           </Card.Wrapper>
           <Card.Wrapper>
-            <Card.Icon
-              unavailable={!user.blog ? 1 : 0}
-              src={IconWebsites}
-              alt='websites'
-            />
+            <IconWebsites unavailable={!user.blog ? 1 : 0} alt='websites' />
             <Card.Link
               target={`${!user.blog ? '_self' : '_blank'}`}
               href={`${
@@ -89,11 +80,7 @@ const UserDetails = () => {
             </Card.Link>
           </Card.Wrapper>
           <Card.Wrapper>
-            <Card.Icon
-              unavailable={!user.company ? 1 : 0}
-              src={IconCompany}
-              alt='company'
-            />
+            <IconCompany unavailable={!user.company ? 1 : 0} alt='company' />
             <Card.Link
               target='_blank'
               href={

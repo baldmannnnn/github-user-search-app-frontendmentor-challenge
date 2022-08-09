@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export const FooterContainer = styled.footer`
-  position: absolute;
-  bottom: 5vh;
+  position: relative;
+  margin-top: 50px;
   font-size: 0.75rem;
   text-align: center;
   width: 100%;
@@ -24,8 +24,16 @@ export const Link = styled.a`
   &:active {
     transform: scale(0.95);
   }
+
+  @media only screen and (min-width: 37.5rem) {
+    font-size: 14px;
+  }
 `
 
 export const Text = styled.p`
-  color: var(--clr-neutral-100);
+  color: ${({ theme }) => theme.accentColor1};
+
+  @media only screen and (min-width: 37.5rem) {
+    font-size: 14px;
+  }
 `

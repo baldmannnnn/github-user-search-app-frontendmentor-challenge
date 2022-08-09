@@ -1,5 +1,5 @@
 import { ThemeProvider } from 'styled-components'
-import MainContainer from './containers/main'
+import SearchUser from './containers/searchUser'
 import UserDetailsContainer from './containers/userDetails'
 import HeaderContainer from './containers/header'
 import FooterContainer from './containers/footer'
@@ -17,7 +17,7 @@ const App = () => {
       {!isLoading && (
         <>
           <HeaderContainer />
-          <MainContainer />
+          <SearchUser />
           <UserDetailsContainer />
           <FooterContainer />
         </>

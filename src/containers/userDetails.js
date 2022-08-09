@@ -11,7 +11,7 @@ const UserDetails = () => {
   return (
     !isLoading &&
     user && (
-      <Card as='section'>
+      <Card as='main'>
         <Card.Header>
           <Card.Image src={user.avatar_url} alt={user.name} />
         </Card.Header>
@@ -40,16 +40,14 @@ const UserDetails = () => {
           </Card.FlexCol>
         </Card.Body>
         <Card.Footer>
-          <Card.Wrapper>
-            <IconLocation unavailable={!user.location ? 1 : 0} alt='location' />
+          <Card.Wrapper unavailable={!user.location ? 1 : 0}>
+            <IconLocation />
             <Card.Text unavailable={!user.location}>{user.location}</Card.Text>
           </Card.Wrapper>
-          <Card.Wrapper>
-            <IconTwitter
-              unavailable={!user.twitter_username ? 1 : 0}
-              alt='twitter'
-            />
+          <Card.Wrapper unavailable={!user.twitter_username ? 1 : 0}>
+            <IconTwitter />
             <Card.Link
+              role='navigation'
               target='_blank'
               href={`${
                 !user.twitter_username
@@ -60,8 +58,8 @@ const UserDetails = () => {
               {!user.twitter_username ? 'Not Available' : user.twitter_username}
             </Card.Link>
           </Card.Wrapper>
-          <Card.Wrapper>
-            <IconWebsites unavailable={!user.blog ? 1 : 0} alt='websites' />
+          <Card.Wrapper unavailable={!user.blog ? 1 : 0}>
+            <IconWebsites />
             <Card.Link
               target={`${!user.blog ? '_self' : '_blank'}`}
               href={`${
@@ -79,8 +77,8 @@ const UserDetails = () => {
                 : 'https://' + user.blog}
             </Card.Link>
           </Card.Wrapper>
-          <Card.Wrapper>
-            <IconCompany unavailable={!user.company ? 1 : 0} alt='company' />
+          <Card.Wrapper unavailable={!user.company ? 1 : 0}>
+            <IconCompany />
             <Card.Link
               target='_blank'
               href={

@@ -21,6 +21,7 @@ export const CardContainer = styled.div`
   row-gap: 1.125rem;
 
   @media only screen and (min-width: 37.5rem) {
+    margin-top: 1.5rem;
     grid-template-areas:
       'avatar profile profile'
       'bio bio bio'

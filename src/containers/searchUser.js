@@ -4,7 +4,7 @@ import { useUserContext } from '../context/userContext'
 import useFetchUser from '../hooks/useFetchUser'
 import { ReactComponent as IconSearch } from '../assets/images/icon-search.svg'
 
-const Main = () => {
+const SearchUser = () => {
   const { error, dispatch } = useUserContext()
   const [username, setUsername] = useState('')
 
@@ -24,28 +24,26 @@ const Main = () => {
   }
 
   return (
-    <main>
-      <Form onSubmit={handleOnSubmit}>
-        <Form.Label htmlFor='search'>
-          {/* <Form.IconSVG size='24px' src={IconSearch} alt='icon search' /> */}
-          <IconSearch alt='search' />
-        </Form.Label>
-        <Form.Input
-          id='search'
-          placeholder='Search Github username...'
-          onChange={e => {
-            if (error) {
-              dispatch({ type: 'SET_ERROR', payload: null })
-            }
-            setUsername(e.target.value)
-          }}
-          value={username}
-        />
-        {error && <Form.Text>{error}</Form.Text>}
-        <Form.Button type='submit'>Search</Form.Button>
-      </Form>
-    </main>
+    <Form role='search' onSubmit={handleOnSubmit}>
+      <Form.Label htmlFor='search'>
+        {/* <Form.IconSVG size='24px' src={IconSearch} alt='icon search' /> */}
+        <IconSearch alt='search' />
+      </Form.Label>
+      <Form.Input
+        id='search'
+        placeholder='Search Github username...'
+        onChange={e => {
+          if (error) {
+            dispatch({ type: 'SET_ERROR', payload: null })
+          }
+          setUsername(e.target.value)
+        }}
+        value={username}
+      />
+      {error && <Form.Text>{error}</Form.Text>}
+      <Form.Button type='submit'>Search</Form.Button>
+    </Form>
   )
 }
 
-export default Main
+export default SearchUser

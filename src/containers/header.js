@@ -1,7 +1,6 @@
 import { Header } from '../components'
-import IconSun from '../assets/images/icon-sun.svg'
-import IconMoon from '../assets/images/icon-moon.svg'
 import { useThemeContext } from '../context/themeContext'
+import SvgIcon from '../components/icon/svg'
 
 const HeaderContainer = () => {
   const { theme, setTheme } = useThemeContext()
@@ -15,21 +14,17 @@ const HeaderContainer = () => {
         <Header.Logo>devfinder</Header.Logo>
       </Header.Wrapper>
       <Header.Wrapper>
-        <div
-          style={{
-            hover: {
-              backgroundColor: 'red',
-            },
-          }}>
-          <Header.Btn onClick={ToggleThemeSwitch}>
-            <Header.Text>{theme === 'light' ? 'dark' : 'light'}</Header.Text>
-
-            <Header.Icon
-              src={theme === 'light' ? IconMoon : IconSun}
-              alt={theme}
-            />
-          </Header.Btn>
-        </div>
+        <Header.Btn onClick={ToggleThemeSwitch}>
+          <Header.Text>{theme === 'light' ? 'dark' : 'light'}</Header.Text>
+          <SvgIcon
+            name={theme === 'light' ? 'moon' : 'sun'}
+            fill={
+              theme === 'light'
+                ? 'var(--clr-secondary)'
+                : 'var(--clr-neutral-100)'
+            }
+          />
+        </Header.Btn>
       </Header.Wrapper>
     </Header>
   )

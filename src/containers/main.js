@@ -2,8 +2,7 @@ import { useState } from 'react'
 import { Form } from '../components'
 import { useUserContext } from '../context/userContext'
 import useFetchUser from '../hooks/useFetchUser'
-
-const IconSearch = process.env.PUBLIC_URL + '/images/icon-search.svg'
+import IconSearch from '../assets/images/icon-search.svg'
 
 const Main = () => {
   const { error, dispatch } = useUserContext()
@@ -28,13 +27,17 @@ const Main = () => {
     <main>
       <Form onSubmit={handleOnSubmit}>
         <Form.Label htmlFor='search'>
-          {/* <Form.Icon src={IconSearch} alt='icon search' /> */}
           <Form.IconSVG size='24px' src={IconSearch} alt='icon search' />
         </Form.Label>
         <Form.Input
           id='search'
-          placeholder='Search GitHub username...'
-          onChange={e => setUsername(e.target.value)}
+          placeholder='Search Github username...'
+          onChange={e => {
+            if (error) {
+              dispatch({ type: 'SET_ERROR', payload: null })
+            }
+            setUsername(e.target.value)
+          }}
           value={username}
         />
         {error && <Form.Text>{error}</Form.Text>}

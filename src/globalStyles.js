@@ -35,7 +35,7 @@ body {
 `
 
 export const Container = styled.div`
-  width: clamp(20.4375rem, 74.6%, 730px);
+  width: clamp(20.4375rem, 74.6%, 45.625rem);
   position: relative;
   margin-inline: auto;
   height: 100vh;

@@ -28,12 +28,6 @@ export const Logo = styled.span`
     theme.themeColor === 'light'
       ? 'hsla(220, 18%, 16%, 1)'
       : theme.secondaryColor};
-  &:hover {
-    color: ${({ theme }) =>
-      theme.themeColor === 'light'
-        ? 'var(--clr-accent-600)'
-        : 'hsl(222, 44%, 70%)'};
-  }
 `
 
 export const Text = styled.span`
@@ -42,15 +36,7 @@ export const Text = styled.span`
   text-transform: uppercase;
   font-weight: 700;
   color: ${({ theme }) => theme.secondaryColor};
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: ${({ theme }) =>
-      theme.themeColor === 'light'
-        ? 'var(--clr-accent-600)'
-        : 'hsl(222, 44%, 70%)'};
-    transition: color 0.3s ease;
-  }
+  margin-bottom: 2px;
 `
 
 export const Btn = styled.button`
@@ -61,27 +47,47 @@ export const Btn = styled.button`
   justify-content: center;
   align-items: center;
   font-family: inherit;
-  /* gap: 16px; */
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  gap: 16px;
+
+  &:hover > span {
+    color: ${({ theme }) =>
+      theme.themeColor === 'light'
+        ? 'var(--clr-accent-600)'
+        : 'hsl(222, 44%, 70%)'};
+  }
+
+  &:hover > svg {
+    path {
+      fill: ${({ theme }) =>
+        theme.themeColor === 'light'
+          ? 'var(--clr-accent-600)'
+          : 'hsl(222, 44%, 70%)'};
+    }
+  }
 `
 
 export const Icon = styled(ReactSVG)`
-  svg {
+  /* svg {
     margin: 5px 0 0 0;
     width: 20px;
     height: 20px;
     path {
       fill: ${({ theme }) => theme.accentColor1};
     }
-  }
-  svg:hover {
+  } */
+  /* svg:hover {
     path {
       fill: ${({ theme }) =>
-        theme.themeColor === 'light'
-          ? 'var(--clr-accent-600)'
-          : 'hsl(222, 44%, 70%)'};
+    theme.themeColor === 'light'
+      ? 'var(--clr-accent-600)'
+      : 'hsl(222, 44%, 70%)'};
       transition: color 0.3s ease;
     }
-  }
+  } */
 `
 
 // export const Icon = styled.img`

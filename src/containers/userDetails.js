@@ -41,11 +41,19 @@ const UserDetails = () => {
         </Card.Body>
         <Card.Footer>
           <Card.Wrapper>
-            <Card.Icon src={IconLocation} alt='location' />
-            <Card.Text notAvailable={!user.location}>{user.location}</Card.Text>
+            <Card.Icon
+              unavailable={!user?.location ? 1 : 0}
+              src={IconLocation}
+              alt='location'
+            />
+            <Card.Text unavailable={!user.location}>{user.location}</Card.Text>
           </Card.Wrapper>
           <Card.Wrapper>
-            <Card.Icon src={IconTwitter} alt='twitter' />
+            <Card.Icon
+              unavailable={!user.twitter_username ? 1 : 0}
+              src={IconTwitter}
+              alt='twitter'
+            />
             <Card.Link
               target='_blank'
               href={`${
@@ -53,12 +61,16 @@ const UserDetails = () => {
                   ? ''
                   : 'https://twitter.com/' + user.twitter_username
               }`}
-              notAvailable={!user.twitter_username}>
+              unavailable={!user.twitter_username}>
               {!user.twitter_username ? 'Not Available' : user.twitter_username}
             </Card.Link>
           </Card.Wrapper>
           <Card.Wrapper>
-            <Card.Icon src={IconWebsites} alt='websites' />
+            <Card.Icon
+              unavailable={!user.blog ? 1 : 0}
+              src={IconWebsites}
+              alt='websites'
+            />
             <Card.Link
               target={`${!user.blog ? '_self' : '_blank'}`}
               href={`${
@@ -68,12 +80,20 @@ const UserDetails = () => {
                   ? 'https://' + user.blog
                   : user.blog
               }`}
-              notAvailable={!user.blog}>
-              {!user.blog ? 'Not Available' : user.blog.replace('https://', '')}
+              unavailable={!user.blog}>
+              {!user.blog
+                ? 'Not Available'
+                : user.blog.includes('https')
+                ? user.blog
+                : 'https://' + user.blog}
             </Card.Link>
           </Card.Wrapper>
           <Card.Wrapper>
-            <Card.Icon src={IconCompany} alt='company' />
+            <Card.Icon
+              unavailable={!user.company ? 1 : 0}
+              src={IconCompany}
+              alt='company'
+            />
             <Card.Link
               target='_blank'
               href={
@@ -81,7 +101,7 @@ const UserDetails = () => {
                   ? '/'
                   : 'https://github.com/' + user.company.replace('@', '')
               }
-              notAvailable={!user.company}>
+              unavailable={!user.company}>
               {!user.company ? 'Not Available' : user.company.replace('@', '')}
             </Card.Link>
           </Card.Wrapper>

@@ -232,8 +232,10 @@ export const Wrapper = styled.div`
 
     path {
       fill: ${({ theme }) => theme.accentColor1};
-      opacity: ${({ children }) =>
-        children[0].props.unavailable ? '0.5' : '1'};
+      opacity: ${({ unavailable }) => {
+        console.log(unavailable)
+        return unavailable ? '0.5' : '1'
+      }};
     }
   }
 `

@@ -42,7 +42,9 @@ const UserDetails = () => {
         <Card.Footer>
           <Card.Wrapper unavailable={!user.location ? 1 : 0}>
             <IconLocation />
-            <Card.Text unavailable={!user.location}>{user.location}</Card.Text>
+            <Card.Text unavailable={!user.location}>
+              {!user.location ? 'Not Availble' : user.location}
+            </Card.Text>
           </Card.Wrapper>
           <Card.Wrapper unavailable={!user.twitter_username ? 1 : 0}>
             <IconTwitter />

@@ -184,10 +184,10 @@ export const Body = styled.div`
   @media only screen and (min-width: 37.5rem) {
     margin-top: 0.75rem;
     margin-bottom: 0.75rem;
+    padding: 0.9375rem 2rem;
   }
   @media only screen and (min-width: 56.25rem) {
     justify-content: flex-start;
-    padding: 0.9375rem 2rem;
     gap: 3.125rem;
   }
 `
